@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompis - Encuentra tu Círculo Social Auténtico, Sin Presiones</title>
+    <meta name="description" content="La app móvil para jóvenes de 18 a 27 años para conectar a su propio ritmo basada en intereses, hobbies y comunidades seguras.">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Free Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Background Connection Nodes Animation Canvas -->
+    <canvas id="nodes-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-link" id="header-logo">
+                <div class="logo-text">
+                    K<span class="logo-o"><span class="node-dot violet"></span><span class="node-line"></span><span class="node-dot yellow"></span></span>MPIS
+                </div>
+            </a>
+            <nav class="main-nav">
+                <a href="#hero" class="nav-link">Inicio</a>
+                <a href="#beneficios" class="nav-link">Beneficios</a>
+                <a href="#como-funciona" class="nav-link">Cómo Funciona</a>
+                <a href="#seguridad" class="nav-link">Seguridad</a>
+                <a href="app.html" class="nav-btn-cta"><i class="fa-solid fa-mobile-screen-button"></i> Abrir App Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-container">
+            
+            <!-- Hero Titles Header -->
+            <div class="hero-header-content">
+                <span class="badge-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Diseñado para tu ritmo y tranquilidad</span>
+                <h1 class="hero-title">Kompis: Encuentra tu Círculo Social Auténtico, Sin Presiones y a Tu Ritmo.</h1>
+                <p class="hero-subtitle">Para jóvenes de 18-27 años. Comunidades basadas en intereses, hobbies y experiencias compartidas. Progresivo y seguro.</p>
+                
+                <div class="hero-actions-container">
+                    <a href="app.html" class="btn-hero-app-launch">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>PROBAR LA APP MÓVIL INTERACTIVA</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Main Grid: Left Selling Image Card + Right Interactive Form -->
+            <div class="hero-grid">
+                
+                <!-- Hero Selling Image Container (Left - Original Clean Framed Card) -->
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-card">
+                        <img src="hero_group.jpg" alt="Jóvenes compartiendo en un ambiente cómodo y auténtico con la app Kompis" class="hero-img">
+                        
+                        <!-- Floating Feature Pill 1 -->
+                        <div class="floating-badge badge-1">
+                            <div class="badge-icon"><i class="fa-solid fa-user-shield"></i></div>
+                            <div class="badge-text">
+                                <strong>100% Verificado</strong>
+                                <span>Entorno seguro para introvertidos</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Feature Pill 2 -->
+                        <div class="floating-badge badge-2">
+                            <div class="badge-icon"><i class="fa-solid fa-users"></i></div>
+                            <div class="badge-text">
+                                <strong>Grupos Pequeños</strong>
+                                <span>Máximo 4-6 personas por mesa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Registration Form Panel (Right) -->
+                <div class="hero-form-wrapper" id="registro">
+                    <div class="form-card">
+                        <h2 class="form-title">¡Comienza a conectar!</h2>
+                        <p class="form-desc">Sé de los primeros en probar la experiencia Kompis en tu ciudad.</p>
+                        
+                        <form id="kompis-signup-form" onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nombre o apodo</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-user input-icon"></i>
+                                    <input type="text" id="name" class="form-input" placeholder="Ej. Sofía o Mateo" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Intereses principales (selecciona al menos uno)</label>
+                                <div class="interests-tag-cloud" id="tag-cloud">
+                                    <button type="button" class="tag-btn" data-interest="Juegos de Mesa">🎲 Juegos de Mesa</button>
+                                    <button type="button" class="tag-btn" data-interest="Café & Charlas">☕ Café & Charlas</button>
+                                    <button type="button" class="tag-btn" data-interest="Lectura & Libros">📚 Lectura</button>
+                                    <button type="button" class="tag-btn" data-interest="Videojuegos & Gaming">🎮 Gaming</button>
+                                    <button type="button" class="tag-btn" data-interest="Arte & Ilustración">🎨 Arte & Dibujo</button>
+                                    <button type="button" class="tag-btn" data-interest="Cine & Series">🍿 Cine & Series</button>
+                                    <button type="button" class="tag-btn" data-interest="Senderismo">🌲 Outdoor / Naturaleza</button>
+                                    <button type="button" class="tag-btn" data-interest="Música Indie">🎧 Música Indie</button>
+                                </div>
+                                <input type="hidden" id="selected-interests" name="interests" required>
+                                <span class="interests-hint" id="interests-hint">Haz clic en tus pasiones favoritas</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-envelope input-icon"></i>
+                                    <input type="email" id="email" class="form-input" placeholder="tu.correo@ejemplo.com" required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-cta-primary">
+                                <span>EMPIEZA A CONECTAR</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                            <div class="security-privacy-note">
+                                <i class="fa-solid fa-lock security-lock-icon"></i>
+                                <span>Registro seguro y privado</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">NUESTROS PILARES</span>
+                <h2 class="section-title">Beneficios</h2>
+                <p class="section-subtitle">Diseñado con empatía para superar la ansiedad social y encontrar afinidad real.</p>
+            </div>
+
+            <div class="benefits-grid">
+                
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                            <span class="yellow-accent-dot"></span>
+                        </div>
+                    </div>
+                    <h3 class="benefit-card-title">Comunidades por Interés</h3>
+                    <p class="benefit-card-text">Encuentra tu grupo ideal basado en tus pasiones. Olvídate de conversaciones superficiales y conecta directo con lo que te apasiona.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            <span class="yellow-accent-dot"></span>
+                        </div>
+                    </div>
+                    <h3 class="benefit-card-title">Pasos Progresivos</h3>
+                    <p class="benefit-card-text">Observa, participa y conecta a tu propio ritmo. Únete a chats temáticos antes de asistir a reuniones en vivo sin ninguna presión.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span class="yellow-accent-dot"></span>
+                        </div>
+                    </div>
+                    <h3 class="benefit-card-title">Eventos Seguros</h3>
+                    <p class="benefit-card-text">Actividades presenciales verificadas con gente afín. Lugares públicos amigables, anfitriones moderadores y grupos reducidos.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper">
+                        <div class="benefit-icon">
+                            <i class="fa-solid fa-face-smile"></i>
+                            <span class="yellow-accent-dot"></span>
+                        </div>
+                    </div>
+                    <h3 class="benefit-card-title">Amistades Reales</h3>
+                    <p class="benefit-card-text">Construye conexiones auténticas y duraderas. Diseñado para crear vínculos genuinos entre estudiantes y jóvenes en nuevas ciudades.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EL PROCESO PROGRESIVO</span>
+                <h2 class="section-title">¿Cómo funciona Kompis?</h2>
+                <p class="section-subtitle">Paso a paso diseñado para acompañarte sin presiones desde el primer clic hasta tu primer café.</p>
+            </div>
+
+            <div class="steps-timeline">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h3 class="step-title">Elige tus Pasiones</h3>
+                    <p class="step-desc">Selecciona tus hobbies reales en lugar de crear un perfil enfocado en apariencias.</p>
+                </div>
+                <div class="step-connector"><i class="fa-solid fa-chevron-right"></i></div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3 class="step-title">Modo Espectador</h3>
+                    <p class="step-desc">Entra a salas de chat temáticas y observa el ambiente antes de decidir reunirte.</p>
+                </div>
+                <div class="step-connector"><i class="fa-solid fa-chevron-right"></i></div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                    <h3 class="step-title">Micro-Encuentros</h3>
+                    <p class="step-desc">Reuniones de máximo 4 a 6 personas en lugares amigables y tranquilos.</p>
+                </div>
+                <div class="step-connector"><i class="fa-solid fa-chevron-right"></i></div>
+
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <div class="step-icon"><i class="fa-solid fa-heart"></i></div>
+                    <h3 class="step-title">Conexión Auténtica</h3>
+                    <p class="step-desc">Construye amistades naturales, sin expectativas citas románticas ni compromisos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Group Explorer Widget -->
+    <section class="live-explorer-section">
+        <div class="container">
+            <div class="section-header white-theme">
+                <span class="section-tag yellow-text">COMUNIDADES ACTIVAS</span>
+                <h2 class="section-title white-text">Descubre círculos cerca de ti</h2>
+                <p class="section-subtitle light-text">Explora algunos de los grupos que ya están organizando encuentros esta semana.</p>
+            </div>
+
+            <div class="explorer-filters">
+                <button type="button" class="filter-btn active" data-filter="all">Todos</button>
+                <button type="button" class="filter-btn" data-filter="juegos">🎲 Juegos de Mesa</button>
+                <button type="button" class="filter-btn" data-filter="cafe">☕ Café & Charlas</button>
+                <button type="button" class="filter-btn" data-filter="gaming">🎮 Gaming</button>
+                <button type="button" class="filter-btn" data-filter="lectura">📚 Libros & Arte</button>
+            </div>
+
+            <div class="groups-grid" id="groups-grid">
+                <!-- Group Card 1 -->
+                <div class="group-card" data-category="juegos">
+                    <div class="group-header">
+                        <span class="group-badge violet"><i class="fa-solid fa-dice-d6"></i> Juegos de Mesa</span>
+                        <span class="group-status"><i class="fa-solid fa-circle pulse-dot"></i> 4/6 Miembros</span>
+                    </div>
+                    <h3 class="group-title">Tarde de Catan & Juegos de Estrategia</h3>
+                    <p class="group-location"><i class="fa-solid fa-location-dot"></i> Cafetería Coyoacán • Sábado 4:00 PM</p>
+                    <div class="group-footer">
+                        <div class="member-avatars">
+                            <span class="avatar" style="background-color: #8338ec;">SO</span>
+                            <span class="avatar" style="background-color: #3a86ef;">MA</span>
+                            <span class="avatar" style="background-color: #ff006e;">LU</span>
+                            <span class="avatar empty">+2</span>
+                        </div>
+                        <button type="button" class="btn-group-action" onclick="scrollToRegister('Juegos de Mesa')">Unirme</button>
+                    </div>
+                </div>
+
+                <!-- Group Card 2 -->
+                <div class="group-card" data-category="cafe">
+                    <div class="group-header">
+                        <span class="group-badge yellow"><i class="fa-solid fa-mug-hot"></i> Café & Charlas</span>
+                        <span class="group-status"><i class="fa-solid fa-circle pulse-dot"></i> 3/5 Miembros</span>
+                    </div>
+                    <h3 class="group-title">Charlas de Estudiantes & Recién Mudados</h3>
+                    <p class="group-location"><i class="fa-solid fa-location-dot"></i> Espresso Bar Centro • Viernes 6:00 PM</p>
+                    <div class="group-footer">
+                        <div class="member-avatars">
+                            <span class="avatar" style="background-color: #fb5607;">CL</span>
+                            <span class="avatar" style="background-color: #8338ec;">AN</span>
+                            <span class="avatar" style="background-color: #06d6a0;">DA</span>
+                            <span class="avatar empty">+2</span>
+                        </div>
+                        <button type="button" class="btn-group-action" onclick="scrollToRegister('Café & Charlas')">Unirme</button>
+                    </div>
+                </div>
+
+                <!-- Group Card 3 -->
+                <div class="group-card" data-category="gaming">
+                    <div class="group-header">
+                        <span class="group-badge violet"><i class="fa-solid fa-gamepad"></i> Gaming Chill</span>
+                        <span class="group-status"><i class="fa-solid fa-circle pulse-dot"></i> 5/6 Miembros</span>
+                    </div>
+                    <h3 class="group-title">Co-op Gaming & Smash Bros Casual</h3>
+                    <p class="group-location"><i class="fa-solid fa-location-dot"></i> Lounge Gaming Hub • Domingo 3:00 PM</p>
+                    <div class="group-footer">
+                        <div class="member-avatars">
+                            <span class="avatar" style="background-color: #7209b7;">VI</span>
+                            <span class="avatar" style="background-color: #4cc9f0;">LE</span>
+                            <span class="avatar" style="background-color: #ffbe0b; color:#000;">GA</span>
+                            <span class="avatar empty">+1</span>
+                        </div>
+                        <button type="button" class="btn-group-action" onclick="scrollToRegister('Videojuegos & Gaming')">Unirme</button>
+                    </div>
+                </div>
+
+                <!-- Group Card 4 -->
+                <div class="group-card" data-category="lectura">
+                    <div class="group-header">
+                        <span class="group-badge yellow"><i class="fa-solid fa-book-open"></i> Club de Lectura</span>
+                        <span class="group-status"><i class="fa-solid fa-circle pulse-dot"></i> 4/5 Miembros</span>
+                    </div>
+                    <h3 class="group-title">Café con Libros de Fantasía & Sci-Fi</h3>
+                    <p class="group-location"><i class="fa-solid fa-location-dot"></i> Librería & Té Gandhi • Sábado 11:00 AM</p>
+                    <div class="group-footer">
+                        <div class="member-avatars">
+                            <span class="avatar" style="background-color: #ef476f;">PA</span>
+                            <span class="avatar" style="background-color: #118ab2;">RO</span>
+                            <span class="avatar" style="background-color: #8338ec;">IS</span>
+                            <span class="avatar empty">+1</span>
+                        </div>
+                        <button type="button" class="btn-group-action" onclick="scrollToRegister('Lectura & Libros')">Unirme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">TESTIMONIOS</span>
+                <h2 class="section-title">Lo que dicen jóvenes como tú</h2>
+                <p class="section-subtitle">Historias reales de personas que encontraron su círculo auténtico sin lidiar con la ansiedad social.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Me mudé a la ciudad por la universidad y no conocía a nadie. En Kompis me uní a un grupo pequeño de juegos de mesa. No había presión de causar una 'gran impresión' y fue súper natural."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #8338ec;">MR</div>
+                        <div>
+                            <strong>Mateo R. (21 años)</strong>
+                            <span>Estudiante de Arquitectura</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Como persona introvertida, las apps tradicionales me abrumaban. Poder ver el chat en 'Modo Espectador' antes de ir a mi primer café de libros me dio la confianza que necesitaba."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #ffbe0b; color:#1f1435;">SV</div>
+                        <div>
+                            <strong>Sofía V. (24 años)</strong>
+                            <span>Diseñadora UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="testimonial-text">"Los grupos reducidos de máximo 6 personas cambian todo. Puedes hablar sin interrumpirte y todos los lugares son cafeterías súper tranquilas con anfitriones atentos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-color: #3a86ef;">DL</div>
+                        <div>
+                            <strong>Diego L. (19 años)</strong>
+                            <span>Estudiante de Medicina</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DUDAS FRECUENTES</span>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Todo lo que necesitas saber antes de dar tu primer paso.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>¿Cómo evitan que me sienta incómodo/a en mi primera reunión?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Todas nuestras actividades presenciales son en grupos muy pequeños (4 a 6 personas) en lugares tranquilos. Además, cada grupo cuenta con un anfitrión Kompis capacitado que propone dinámicas suaves para romper el hielo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>¿Qué rango de edad tienen las personas en la comunidad?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Kompis está diseñado exclusivamente para jóvenes de 18 a 27 años. Verificamos la identidad de cada miembro para mantener un ambiente seguro, afín y auténtico.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>¿Qué es exactamente el "Modo Espectador"?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Es una función que te permite unirte al chat grupal de un evento para ver cómo interactúan los miembros antes de confirmar tu presencia presencial. Si sientes que no es el grupo indicado, puedes salirte en cualquier momento sin explicaciones.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>¿Unirme a Kompis tiene algún costo?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El registro y el acceso a comunidades públicas es 100% gratuito durante la fase de lanzamiento beta. En los encuentros en cafeterías o espacios públicos, cada asistente cubre únicamente su consumo personal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second Chance / Footer Section -->
+    <section class="footer-cta-section" id="seguridad">
+        <div class="container footer-cta-container">
+            <div class="footer-cta-content">
+                <div class="node-graphic-floating">
+                    <i class="fa-solid fa-shield-halved footer-shield-icon"></i>
+                </div>
+                <h2 class="footer-cta-title">¿Aún no estás listo? Infórmate más sobre cómo cuidamos tu experiencia.</h2>
+                <p class="footer-cta-subtext">Tu comodidad es nuestra prioridad número uno. Conoce nuestros protocolos anti-presión, verificación de perfiles y guías de interacción relajada.</p>
+                
+                <button type="button" class="btn-cta-secondary" onclick="openSafetyModal()">
+                    <span>SABER MÁS</span>
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <span class="footer-logo">KOMPIS</span> &copy; 2026. Conectando a jóvenes de 18 a 27 años a su propio ritmo.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="openSafetyModal(); return false;">Privacidad & Seguridad</a>
+                    <a href="#">Código de Convivencia</a>
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Information Modal -->
+    <div class="modal-overlay" id="safety-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeSafetyModal()">&times;</button>
+            <div class="modal-header">
+                <div class="modal-icon-badge">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Seguridad & Conexión Progresiva en Kompis</h3>
+            </div>
+            <div class="modal-body">
+                <div class="safety-feature-item">
+                    <i class="fa-solid fa-user-check safety-item-icon"></i>
+                    <div>
+                        <h4>Verificación Personalizada</h4>
+                        <p>Cada perfil pasa por un proceso de verificación para garantizar la autenticidad del grupo de 18 a 27 años.</p>
+                    </div>
+                </div>
+                <div class="safety-feature-item">
+                    <i class="fa-solid fa-door-open safety-item-icon"></i>
+                    <div>
+                        <h4>Salas de Observación "Modo Espectador"</h4>
+                        <p>Puedes ingresar a chats de eventos para ver el ambiente antes de confirmar tu asistencia sin sentir ningún compromiso.</p>
+                    </div>
+                </div>
+                <div class="safety-feature-item">
+                    <i class="fa-solid fa-location-dot safety-item-icon"></i>
+                    <div>
+                        <h4>Puntos de Encuentro Certificados</h4>
+                        <p>Nuestras actividades ocurren exclusivamente en cafés locales, librerías y espacios públicos tranquilos y seguros.</p>
+                    </div>
+                </div>
+                <div class="safety-feature-item">
+                    <i class="fa-solid fa-comments safety-item-icon"></i>
+                    <div>
+                        <h4>Anfitriones "Rompehielos"</h4>
+                        <p>Cada encuentro cuenta con un anfitrión Kompis capacitado para facilitar dinámicas sutiles y evitar silencios incómodos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-understand" onclick="closeSafetyModal()">¡Entendido, suena genial!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Toast / Notification -->
+    <div class="toast-notification" id="toast">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <div class="toast-content">
+            <strong>¡Registro exitoso!</strong>
+            <p>Bienvenido a la comunidad Kompis. Te enviaremos tu acceso exclusivo.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

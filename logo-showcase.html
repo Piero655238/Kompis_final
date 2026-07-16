@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompis - Identidad de Marca y Sistema de Logos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --color-violet: #8338ec;
+            --color-yellow: #ffbe0b;
+            --color-white: #ffffff;
+            --color-dark: #1f1435;
+            --color-light-bg: #f8f6fc;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-light-bg);
+            color: var(--color-dark);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--color-violet);
+            font-weight: 800;
+        }
+        .header p {
+            color: #5e5274;
+            font-size: 1.1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        @media(max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(131, 56, 236, 0.08);
+            border: 1px solid rgba(131, 56, 236, 0.12);
+        }
+        .card-dark {
+            background-color: var(--color-dark);
+            color: #fff;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card-dark .card-title { color: #fff; }
+        .logo-preview-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            border-radius: 14px;
+            min-height: 160px;
+        }
+        .bg-light-box { background-color: #ffffff; border: 2px dashed #e2d9f3; }
+        .bg-dark-box { background-color: var(--color-dark); border: 2px dashed rgba(255, 255, 255, 0.2); }
+        .bg-gradient-box { background: linear-gradient(135deg, #9d4edd, #8338ec); }
+        
+        .logo-preview-box img, .logo-preview-box svg {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+        }
+        
+        .action-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: var(--color-violet);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 99px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn:hover { background-color: #641ed3; transform: translateY(-2px); }
+        .btn-yellow {
+            background-color: var(--color-yellow);
+            color: var(--color-dark);
+        }
+        .btn-yellow:hover { background-color: #ffd043; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-violet);
+            color: var(--color-violet);
+        }
+        .btn-outline:hover { background: var(--color-violet); color: #fff; }
+
+        .palette-row {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .color-chip {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .chip-violet { background-color: #8338ec; }
+        .chip-yellow { background-color: #ffbe0b; color: #1f1435; }
+        .chip-white { background-color: #ffffff; color: #1f1435; border: 1px solid #ddd; }
+        .chip-dark { background-color: #1f1435; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Sistema de Identidad de Marca Kompis</h1>
+            <p>Archivos vectoriales SVG, icono de aplicación móvil y manual de paleta oficial.</p>
+        </div>
+
+        <div class="grid">
+            <!-- 1. Logo Principal (Fondo Claro) -->
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fa-solid fa-sun" style="color: #ffbe0b;"></i> Logo Horizontal (Fondo Claro)</span>
+                    <span class="badge" style="font-size:0.75rem; background:#8338ec; color:#fff; padding:3px 10px; border-radius:10px;">SVG Vector</span>
+                </div>
+                <div class="logo-preview-box bg-light-box">
+                    <img src="kompis-logo-full.svg" alt="Kompis Logo Full">
+                </div>
+                <div class="action-row">
+                    <a href="kompis-logo-full.svg" download class="btn"><i class="fa-solid fa-download"></i> Descargar SVG</a>
+                    <a href="kompis-logo-full.svg" target="_blank" class="btn btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Archivo</a>
+                </div>
+            </div>
+
+            <!-- 2. Logo Horizontal (Fondo Oscuro / Dark Mode) -->
+            <div class="card card-dark">
+                <div class="card-title">
+                    <span><i class="fa-solid fa-moon" style="color: #ffbe0b;"></i> Logo Horizontal (Dark Mode)</span>
+                    <span class="badge" style="font-size:0.75rem; background:#ffbe0b; color:#1f1435; padding:3px 10px; border-radius:10px;">SVG Vector</span>
+                </div>
+                <div class="logo-preview-box bg-dark-box">
+                    <img src="kompis-logo-dark.svg" alt="Kompis Logo Dark Mode">
+                </div>
+                <div class="action-row">
+                    <a href="kompis-logo-dark.svg" download class="btn btn-yellow"><i class="fa-solid fa-download"></i> Descargar SVG</a>
+                    <a href="kompis-logo-dark.svg" target="_blank" class="btn btn-outline" style="border-color:#fff; color:#fff;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Archivo</a>
+                </div>
+            </div>
+
+            <!-- 3. Icono de App Móvil Vectorial (Squircle) -->
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fa-solid fa-mobile-screen-button" style="color: #8338ec;"></i> Icono Móvil Vectorial (iOS / Android)</span>
+                    <span class="badge" style="font-size:0.75rem; background:#8338ec; color:#fff; padding:3px 10px; border-radius:10px;">SVG Vector</span>
+                </div>
+                <div class="logo-preview-box bg-light-box">
+                    <img src="kompis-app-icon.svg" alt="Kompis App Icon Vector" style="max-height: 130px;">
+                </div>
+                <div class="action-row">
+                    <a href="kompis-app-icon.svg" download class="btn"><i class="fa-solid fa-download"></i> Descargar SVG</a>
+                    <a href="kompis-app-icon.svg" target="_blank" class="btn btn-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Archivo</a>
+                </div>
+            </div>
+
+            <!-- 4. Render 3D Mockup Icon (PNG/JPG High Quality) -->
+            <div class="card">
+                <div class="card-title">
+                    <span><i class="fa-solid fa-wand-magic-sparkles" style="color: #ffbe0b;"></i> Render Mockup de Marca</span>
+                    <span class="badge" style="font-size:0.75rem; background:#ffbe0b; color:#1f1435; padding:3px 10px; border-radius:10px;">3D High-Res</span>
+                </div>
+                <div class="logo-preview-box bg-gradient-box" style="padding: 10px;">
+                    <img src="kompis_app_logo_mockup_1784123784806.jpg" alt="Kompis 3D Logo Mockup" style="border-radius: 16px; max-height: 180px; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+                </div>
+            </div>
+        </div>
+
+        <!-- Paleta de Colores de la Marca -->
+        <div class="card">
+            <h2 style="font-size: 1.3rem; color: var(--color-violet); margin-bottom: 8px;">Guía de Colores de la Marca Kompis (60/30/10)</h2>
+            <p style="font-size: 0.9rem; color: #5e5274;">Codificación exacta de colores para desarrollo y materiales gráficos.</p>
+            
+            <div class="palette-row">
+                <div class="color-chip chip-violet">
+                    <span>60% Dominante</span>
+                    <br><strong>#8338EC</strong>
+                </div>
+                <div class="color-chip chip-yellow">
+                    <span>10% Acento</span>
+                    <br><strong>#FFBE0B</strong>
+                </div>
+                <div class="color-chip chip-white">
+                    <span>30% Secundario</span>
+                    <br><strong>#FFFFFF</strong>
+                </div>
+                <div class="color-chip chip-dark">
+                    <span>Obsidiana Texto</span>
+                    <br><strong>#1F1435</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

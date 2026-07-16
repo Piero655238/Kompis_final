@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompis - App Móvil Interactiva</title>
+    <meta name="description" content="Aplicación móvil interactiva Kompis para conectar a jóvenes de 18 a 27 años a su propio ritmo.">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Free Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="app-styles.css">
+</head>
+<body>
+
+    <!-- Outer Device Simulator Container -->
+    <div class="device-viewport">
+        
+        <!-- Controls Top Bar -->
+        <div class="simulator-header-bar">
+            <div class="brand-badge">
+                <span class="logo-o-mini"><span class="dot v"></span><span class="dot y"></span></span> KOMPIS APP DEMO
+            </div>
+            <div class="device-actions">
+                <button type="button" class="device-btn active" id="btn-toggle-frame" onclick="togglePhoneFrame()">
+                    <i class="fa-solid fa-mobile-screen"></i> <span>Vista Celular</span>
+                </button>
+                <a href="index.html" class="device-btn btn-landing">
+                    <i class="fa-solid fa-house"></i> <span>Landing Page</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Phone Mockup Frame -->
+        <div class="phone-frame" id="phone-frame">
+            
+            <!-- Phone Notch / Dynamic Island -->
+            <div class="phone-notch">
+                <div class="notch-speaker"></div>
+                <div class="notch-camera"></div>
+            </div>
+
+            <!-- Phone Screen Content -->
+            <div class="phone-screen">
+
+                <!-- App Top Bar (Dynamic per view) -->
+                <header class="app-top-bar">
+                    <div class="user-location-info">
+                        <i class="fa-solid fa-location-dot loc-icon"></i>
+                        <div>
+                            <span class="loc-label">Tu ciudad</span>
+                            <strong class="loc-name">Coyoacán / CDMX</strong>
+                        </div>
+                    </div>
+                    <div class="top-actions">
+                        <button class="top-icon-btn" onclick="triggerNotificationSim()" title="Notificaciones">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="unread-dot"></span>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- TAB VISTA 1: DESCUBRIR (FEED DE GRUPOS) -->
+                <main class="app-tab-view active" id="view-discover">
+                    <div class="view-header-banner">
+                        <div class="tag-pill-safe"><i class="fa-solid fa-shield-halved"></i> 100% Verificado 18-27 años</div>
+                        <h2>Encuentra tu Círculo</h2>
+                        <p>Grupos de 4 a 6 personas cerca de ti en cafés y espacios tranquilos.</p>
+                    </div>
+
+                    <!-- Interest Category Filter Chips -->
+                    <div class="filter-scroll-chips">
+                        <button type="button" class="chip-btn active" data-interest="all">🔥 Todos</button>
+                        <button type="button" class="chip-btn" data-interest="juegos">🎲 Juegos de Mesa</button>
+                        <button type="button" class="chip-btn" data-interest="cafe">☕ Café & Charlas</button>
+                        <button type="button" class="chip-btn" data-interest="gaming">🎮 Gaming</button>
+                        <button type="button" class="chip-btn" data-interest="lectura">📚 Libros</button>
+                    </div>
+
+                    <!-- Groups List -->
+                    <div class="app-groups-list" id="discover-groups-list">
+                        <!-- Group Card 1 -->
+                        <div class="app-group-card" data-category="juegos">
+                            <div class="card-top-status">
+                                <span class="badge-interest violet"><i class="fa-solid fa-dice-d6"></i> Juegos de Mesa</span>
+                                <span class="badge-seats"><i class="fa-solid fa-user-group"></i> 4/6 Cupos</span>
+                            </div>
+                            <h3 class="card-group-name">Catan & Juegos de Estrategia Casual</h3>
+                            <p class="card-location"><i class="fa-solid fa-store"></i> Cafetería Coyoacán • Sábado 4:00 PM</p>
+                            
+                            <div class="card-host-row">
+                                <div class="host-avatar" style="background-color: #8338ec;">SO</div>
+                                <div class="host-meta">
+                                    <strong>Sofía V. (Anfitriona)</strong>
+                                    <span>"Traigo 3 juegos geniales y fáciles"</span>
+                                </div>
+                            </div>
+
+                            <div class="card-actions">
+                                <button type="button" class="btn-app-secondary" onclick="enterSpectatorMode('Catan & Juegos de Estrategia')">
+                                    <i class="fa-solid fa-eye"></i> <span>Modo Espectador</span>
+                                </button>
+                                <button type="button" class="btn-app-primary" onclick="confirmAssistanceGroup('Catan & Juegos de Estrategia')">
+                                    <span>Unirme</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Group Card 2 -->
+                        <div class="app-group-card" data-category="cafe">
+                            <div class="card-top-status">
+                                <span class="badge-interest yellow"><i class="fa-solid fa-mug-hot"></i> Café & Charlas</span>
+                                <span class="badge-seats"><i class="fa-solid fa-user-group"></i> 3/5 Cupos</span>
+                            </div>
+                            <h3 class="card-group-name">Café de Estudiantes & Recién Mudados</h3>
+                            <p class="card-location"><i class="fa-solid fa-store"></i> Espresso Bar Centro • Viernes 6:00 PM</p>
+                            
+                            <div class="card-host-row">
+                                <div class="host-avatar" style="background-color: #3a86ef;">MA</div>
+                                <div class="host-meta">
+                                    <strong>Mateo R. (Anfitrión)</strong>
+                                    <span>"Charla relajada sobre la universidad"</span>
+                                </div>
+                            </div>
+
+                            <div class="card-actions">
+                                <button type="button" class="btn-app-secondary" onclick="enterSpectatorMode('Café de Estudiantes')">
+                                    <i class="fa-solid fa-eye"></i> <span>Modo Espectador</span>
+                                </button>
+                                <button type="button" class="btn-app-primary" onclick="confirmAssistanceGroup('Café de Estudiantes')">
+                                    <span>Unirme</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Group Card 3 -->
+                        <div class="app-group-card" data-category="gaming">
+                            <div class="card-top-status">
+                                <span class="badge-interest violet"><i class="fa-solid fa-gamepad"></i> Gaming</span>
+                                <span class="badge-seats"><i class="fa-solid fa-user-group"></i> 5/6 Cupos</span>
+                            </div>
+                            <h3 class="card-group-name">Co-op Gaming & Smash Bros Casual</h3>
+                            <p class="card-location"><i class="fa-solid fa-store"></i> Gaming Hub Lounge • Domingo 3:00 PM</p>
+                            
+                            <div class="card-host-row">
+                                <div class="host-avatar" style="background-color: #06d6a0;">DL</div>
+                                <div class="host-meta">
+                                    <strong>Diego L. (Anfitrión)</strong>
+                                    <span>"Nivel principiante amigable"</span>
+                                </div>
+                            </div>
+
+                            <div class="card-actions">
+                                <button type="button" class="btn-app-secondary" onclick="enterSpectatorMode('Co-op Gaming')">
+                                    <i class="fa-solid fa-eye"></i> <span>Modo Espectador</span>
+                                </button>
+                                <button type="button" class="btn-app-primary" onclick="confirmAssistanceGroup('Co-op Gaming')">
+                                    <span>Unirme</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+
+                <!-- TAB VISTA 2: MODO ESPECTADOR (CHAT SIMULADO EN TIEMPO REAL) -->
+                <main class="app-tab-view" id="view-spectator">
+                    <!-- Spectator Chat Header -->
+                    <div class="chat-header-bar">
+                        <div class="chat-group-info">
+                            <span class="spectator-mode-pill"><i class="fa-solid fa-eye"></i> Modo Espectador Activo</span>
+                            <h3 id="current-chat-title">Catan & Juegos de Estrategia</h3>
+                            <span class="chat-subtitle">4 miembros en la sala • Anfitriona: Sofía V.</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Info Banner -->
+                    <div class="spectator-notice">
+                        <i class="fa-solid fa-lock-open notice-icon"></i>
+                        <p>Estás en <strong>Modo Espectador</strong>. Puedes observar la conversación tranquilamente sin compromiso antes de decidir asistir.</p>
+                    </div>
+
+                    <!-- Chat Messages Area -->
+                    <div class="chat-messages-area" id="chat-messages-container">
+                        <!-- Message 1: Host Icebreaker -->
+                        <div class="chat-bubble host-bubble">
+                            <div class="bubble-header">
+                                <strong>Sofía V. (Anfitriona)</strong>
+                                <span class="badge-host">Host Kompis</span>
+                            </div>
+                            <p>¡Hola a todos! 👋 Qué gusto que se estén sumando. Vamos a estar en la mesa redonda del fondo de la cafetería. Nadie tiene que preocuparse por llegar temprano ni hablar rápido, es 100% libre.</p>
+                            <span class="bubble-time">10:14 AM</span>
+                        </div>
+
+                        <!-- Message 2: Member 1 -->
+                        <div class="chat-bubble member-bubble">
+                            <div class="bubble-header">
+                                <strong style="color: #ff006e;">Mateo R.</strong>
+                            </div>
+                            <p>¡Genial! Yo llevo un par de juegos más por si quieren probar opciones rápidas 🎲</p>
+                            <span class="bubble-time">10:16 AM</span>
+                        </div>
+
+                        <!-- Message 3: Member 2 -->
+                        <div class="chat-bubble member-bubble">
+                            <div class="bubble-header">
+                                <strong style="color: #3a86ef;">Lucía M.</strong>
+                            </div>
+                            <p>Super, es mi primera vez en Kompis y la verdad me da un poco de pena, pero me alegra que sea un grupo reducido ☕</p>
+                            <span class="bubble-time">10:18 AM</span>
+                        </div>
+
+                        <!-- Message 4: Host Reply -->
+                        <div class="chat-bubble host-bubble">
+                            <div class="bubble-header">
+                                <strong>Sofía V. (Anfitriona)</strong>
+                            </div>
+                            <p>@Lucía ¡No te preocupes para nada! La idea es pasarla bien tranquilos. ¡Bienvenida!</p>
+                            <span class="bubble-time">10:20 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom CTA & Input Bar inside Spectator View -->
+                    <div class="chat-bottom-control">
+                        <div class="chat-input-row">
+                            <input type="text" id="chat-input-field" placeholder="Escribe algo suave o saluda..." onkeypress="handleChatKeyPress(event)">
+                            <button type="button" class="btn-send-msg" onclick="sendUserChatMessage()">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Main CTA: Confirm Spot -->
+                        <button type="button" class="btn-confirm-attendance" onclick="confirmCurrentSpectatorGroup()">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>¡ME SIENTO CÓMODO(A), CONFIRMAR ASISTENCIA!</span>
+                        </button>
+                    </div>
+                </main>
+
+
+                <!-- TAB VISTA 3: MIS ENCUENTROS (AGENDA & ROMPEHIELOS) -->
+                <main class="app-tab-view" id="view-schedule">
+                    <div class="view-header-banner">
+                        <h2>Mis Encuentros</h2>
+                        <p>Tus reuniones confirmadas y herramientas rompehielos.</p>
+                    </div>
+
+                    <!-- Upcoming Meetups Container -->
+                    <div class="my-meetups-list" id="my-meetups-list">
+                        <!-- Upcoming Item 1 -->
+                        <div class="meetup-ticket-card" id="ticket-catan">
+                            <div class="ticket-status-bar">
+                                <span class="status-badge-active"><i class="fa-solid fa-circle-check"></i> Asistencia Confirmada</span>
+                                <span class="ticket-date">Sábado 4:00 PM</span>
+                            </div>
+                            <h3 class="ticket-title">Catan & Juegos de Estrategia</h3>
+                            <p class="ticket-place"><i class="fa-solid fa-location-dot"></i> Cafetería Coyoacán, Calle Allende #42</p>
+
+                            <div class="ticket-details-box">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>4 Miembros en tu mesa</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    <span>Anfitriona: Sofía V.</span>
+                                </div>
+                            </div>
+
+                            <div class="ticket-actions">
+                                <button type="button" class="btn-ticket-icebreaker" onclick="openIcebreakerModal()">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Ver Rompehielos</span>
+                                </button>
+                                <button type="button" class="btn-ticket-cancel" onclick="cancelMeetup('ticket-catan')">
+                                    <i class="fa-solid fa-xmark"></i> <span>Cancelar sin culpa</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icebreaker Prompt Generator Widget -->
+                    <div class="icebreaker-widget-box">
+                        <div class="widget-header">
+                            <i class="fa-solid fa-comments widget-icon"></i>
+                            <div>
+                                <h4>Generador de Temas Rompehielos</h4>
+                                <span>¿Sin saber de qué hablar en el café? Haz clic para una idea genial.</span>
+                            </div>
+                        </div>
+                        <div class="icebreaker-card-display" id="icebreaker-card-text">
+                            "¿Cuál es el juego de mesa o videojuego de tu infancia que más recuerdas con cariño?"
+                        </div>
+                        <button type="button" class="btn-new-icebreaker" onclick="generateNewIcebreaker()">
+                            <i class="fa-solid fa-rotate"></i> <span>Generar Otra Pregunta</span>
+                        </button>
+                    </div>
+                </main>
+
+
+                <!-- TAB VISTA 4: MI PERFIL -->
+                <main class="app-tab-view" id="view-profile">
+                    <div class="profile-header-card">
+                        <div class="profile-avatar-big">
+                            <span>SO</span>
+                            <span class="verified-badge" title="Usuario Verificado"><i class="fa-solid fa-check"></i></span>
+                        </div>
+                        <h3 class="profile-name">Sofía Hernández</h3>
+                        <span class="profile-age">22 años • Estudiante de Diseño</span>
+                        <div class="profile-status-chip">
+                            <i class="fa-solid fa-face-smile"></i> <span>Busco conexiones tranquilas sin prisa</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-section-card">
+                        <h4><i class="fa-solid fa-heart"></i> Mis Pasiones E Intereses</h4>
+                        <div class="profile-tags-cloud">
+                            <span class="tag-pill active">🎲 Juegos de Mesa</span>
+                            <span class="tag-pill active">☕ Café & Charlas</span>
+                            <span class="tag-pill active">🎨 Dibujo</span>
+                            <span class="tag-pill">🎮 Gaming</span>
+                            <span class="tag-pill">📚 Lectura</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-section-card">
+                        <h4><i class="fa-solid fa-sliders"></i> Preferencias de Comodidad</h4>
+                        <div class="pref-item">
+                            <div>
+                                <strong>Tamaño Máximo de Grupo</strong>
+                                <p>Prefiero grupos reducidos de máximo 4 personas</p>
+                            </div>
+                            <span class="pref-value">4 Personas</span>
+                        </div>
+                        <div class="pref-item">
+                            <div>
+                                <strong>Notificaciones de Eventos</strong>
+                                <p>Avisar con 24 hrs de anticipación</p>
+                            </div>
+                            <span class="pref-value">Activado</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-section-card">
+                        <button type="button" class="btn-profile-edit" onclick="triggerSaveProfileSim()">
+                            <i class="fa-solid fa-pen-to-square"></i> <span>Guardar Cambios de Perfil</span>
+                        </button>
+                    </div>
+                </main>
+
+
+                <!-- APP BOTTOM TAB BAR NAVEGACIÓN -->
+                <nav class="app-bottom-nav">
+                    <button type="button" class="nav-tab-item active" data-tab="view-discover" onclick="switchAppTab('view-discover')">
+                        <i class="fa-solid fa-compass tab-icon"></i>
+                        <span class="tab-label">Descubrir</span>
+                    </button>
+
+                    <button type="button" class="nav-tab-item" data-tab="view-spectator" onclick="switchAppTab('view-spectator')">
+                        <i class="fa-solid fa-eye tab-icon"></i>
+                        <span class="tab-label">Espectador</span>
+                        <span class="tab-badge-dot"></span>
+                    </button>
+
+                    <button type="button" class="nav-tab-item" data-tab="view-schedule" onclick="switchAppTab('view-schedule')">
+                        <i class="fa-solid fa-calendar-days tab-icon"></i>
+                        <span class="tab-label">Encuentros</span>
+                    </button>
+
+                    <button type="button" class="nav-tab-item" data-tab="view-profile" onclick="switchAppTab('view-profile')">
+                        <i class="fa-solid fa-user tab-icon"></i>
+                        <span class="tab-label">Perfil</span>
+                    </button>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup inside App -->
+    <div class="app-toast-popup" id="app-toast">
+        <div class="toast-icon-wrapper">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="toast-body">
+            <strong id="app-toast-title">¡Asistencia Confirmada!</strong>
+            <p id="app-toast-msg">Te hemos agregado a la mesa en el café.</p>
+        </div>
+    </div>
+
+    <script src="app-script.js"></script>
+</body>
+</html>
